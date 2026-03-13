@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | FORTIVO INDUSTRIES</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --editorial-bg: #F9F6F1;
+            --editorial-text: #1A1512;
+            --editorial-accent: #D4AF37;
+            --editorial-font-alt: 'Playfair Display', serif;
+        }
+
+        body.editorial-gallery {
+            background: linear-gradient(rgba(249, 246, 241, 0.94), rgba(249, 246, 241, 0.94)), url('ff.png');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--editorial-text);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Override Header for Light Mode */
+        .editorial-gallery nav {
+            background: rgba(249, 246, 241, 0.9);
+            border-bottom: 1px solid rgba(26, 21, 18, 0.05);
+        }
+
+        .editorial-gallery .logo, 
+        .editorial-gallery .nav-links a {
+            color: var(--editorial-text);
+        }
+
+        .editorial-gallery .logo span {
+            color: var(--editorial-accent);
+        }
+
+        /* Gallery Hero */
+        .gallery-editorial-header {
+            padding: 180px 5% 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-editorial-header h1 {
+            font-size: 7rem;
+            font-weight: 400;
+            font-family: var(--editorial-font-alt);
+            margin-bottom: 20px;
+            color: var(--editorial-text);
+            letter-spacing: -2px;
+        }
+
+        .gallery-editorial-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(26, 21, 18, 0.6);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Floating Decoration Panels */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.8;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+            animation: floatSlow 10s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .panel-1 { top: 15%; left: 8%; width: 140px; animation-delay: 0s; }
+        .panel-2 { top: 25%; right: 10%; width: 180px; animation-delay: -2s; }
+        .panel-3 { bottom: 10%; left: 5%; width: 120px; animation-delay: -5s; }
+        .panel-4 { bottom: 20%; right: 5%; width: 150px; animation-delay: -7s; }
+
+        /* Magazine Grid Layout */
+        .editorial-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 150px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+        }
+
+        /* Grid Item Styles */
+        .editorial-item {
+            position: relative;
+            background: white;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.03);
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .editorial-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .editorial-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s ease;
+        }
+
+        .editorial-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .editorial-content {
+            padding: 40px;
+            background: white;
+            z-index: 2;
+        }
+
+        .editorial-content h3 {
+            font-family: var(--editorial-font-alt);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--editorial-text);
+        }
+
+        .editorial-content p {
+            font-size: 0.95rem;
+            color: rgba(26, 21, 18, 0.6);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .explore-btn {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--editorial-text);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--editorial-text);
+            padding-bottom: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            gap: 20px;
+            color: var(--editorial-accent);
+            border-color: var(--editorial-accent);
+        }
+
+        /* Specific Sizes */
+        .item-hero {
+            grid-column: span 12;
+            height: 700px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+        }
+
+        .item-medium {
+            grid-column: span 6;
+            height: 600px;
+        }
+
+        .item-small {
+            grid-column: span 4;
+            height: 500px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .item-medium { grid-column: span 6; }
+            .item-small { grid-column: span 6; }
+            .gallery-editorial-header h1 { font-size: 5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .item-hero { 
+                grid-template-columns: 1fr; 
+                height: auto; 
+                grid-column: span 12;
+            }
+            .item-hero .editorial-content { height: 350px; }
+            .item-medium, .item-small { 
+                grid-column: span 12; 
+                height: 500px; 
+            }
+            .gallery-editorial-header h1 { font-size: 4rem; }
+            .floating-element { display: none; }
+        }
+
+        /* Dark Footer Transition Overrides */
+        .editorial-gallery footer {
+            background: var(--editorial-text);
+            color: white;
+        }
+        .editorial-gallery footer h2, 
+        .editorial-gallery footer h4,
+        .editorial-gallery footer a {
+            color: white;
+        }
+        .editorial-gallery footer .tagline {
+            color: var(--editorial-accent);
+        }
+    </style>
+</head>
+
+<body class="editorial-gallery">
+
+    <nav>
+        <div class="logo">
+            <img src="fortivooo.jpeg" alt="Fortivo" class="nav-logo">
+            FORTIVO <span>INDUSTRIES</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline" style="border-color: var(--editorial-text); color: var(--editorial-text);">Get a Quote</a>
+    </nav>
+
+    <header class="gallery-editorial-header">
+        <!-- Floating Panels for Editorial Feel -->
+        <img src="floating_veneer_plywood_1773417063249.png" class="floating-element panel-1" alt="Decorative Plywood">
+        <img src="floating_dark_walnut_panel_1773417122500.png" class="floating-element panel-2" alt="Decorative Plywood">
+        <img src="floating_ribbed_panel_1773417080239.png" class="floating-element panel-3" alt="Decorative Plywood">
+        <img src="floating_matte_plywood_1773417097616.png" class="floating-element panel-4" alt="Decorative Plywood">
+
+        <div class="animate-up">
+            <h1>Gallery</h1>
+            <p>Explore premium plywood surfaces, textures, and finishes crafted for modern interiors.</p>
+        </div>
+    </header>
+
+    <div class="editorial-grid">
+        <!-- Top Row - 3 Images -->
+        <div class="editorial-item item-small animate-up">
+            <img src="gg.png" alt="Signature Collection">
+        </div>
+        <div class="editorial-item item-small animate-up">
+            <img src="2.png" alt="Premium Finish">
+        </div>
+        <div class="editorial-item item-small animate-up">
+            <img src="3.png" alt="Natural Grain">
+        </div>
+
+        <!-- 2. Medium Blocks -->
+        <div class="editorial-item item-medium animate-up">
+            <div style="width: 100%; height: 100%; overflow: hidden;">
+                <img src="4.png" alt="Premium Surfaces">
+            </div>
+        </div>
+
+        <div class="editorial-item item-medium animate-up">
+            <div style="width: 100%; height: 100%; overflow: hidden;">
+                <img src="5.png" alt="Interior Architecture">
+            </div>
+        </div>
+
+        <!-- 3. Smaller Blocks -->
+        <div class="editorial-item item-small animate-up">
+            <div style="width: 100%; height: 100%; overflow: hidden;">
+                <img src="6.png" alt="Textured Panels">
+            </div>
+        </div>
+
+        <div class="editorial-item item-small animate-up">
+            <div style="width: 100%; height: 100%; overflow: hidden;">
+                <img src="7.png" alt="Veneer Selection">
+            </div>
+        </div>
+
+        <div class="editorial-item item-small animate-up">
+            <div style="width: 100%; height: 100%; overflow: hidden;">
+                <img src="8.png" alt="Modern Interiors">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>FORTIVO <span>INDUSTRIES</span></h2>
+                <p class="tagline">BUILD TO LAST</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Our Products</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Building No. 1-21/A, Champamala Road,</li>
+                    <li>Puthuvely P.O., Veliyannoor,</li>
+                    <li>Kottayam, Kerala 686636</li>
+                    <li><i class="fas fa-phone"></i> +91 755 9999 120</li>
+                    <li><i class="fas fa-envelope"></i> info@fortivo.co.in</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FORTIVO INDUSTRIES – BUILD TO LAST. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-up').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+
+        // Sticky Navbar Glassmorphism Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(249, 246, 241, 0.98)';
+                nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.05)';
+            } else {
+                nav.style.background = 'rgba(249, 246, 241, 0.9)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
