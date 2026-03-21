@@ -2,301 +2,236 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | FORTIVO INDUSTRIES</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | FORTIVO PLYBOARDS</title>
+
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --editorial-bg: #F9F6F1;
-            --editorial-text: #1A1512;
-            --editorial-accent: #D4AF37;
+            --editorial-bg: #041b3d;
+            --editorial-text: #ffffff;
+            --editorial-accent: #E26534;
             --editorial-font-alt: 'Playfair Display', serif;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            background: #041b3d;
+        }
+
         body.editorial-gallery {
-            background: linear-gradient(rgba(249, 246, 241, 0.94), rgba(249, 246, 241, 0.94)), url('ff.png');
-            background-size: cover;
-            background-attachment: fixed;
+            background: #041b3d;
             color: var(--editorial-text);
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Override Header for Light Mode */
-        .editorial-gallery nav {
-            background: rgba(249, 246, 241, 0.9);
-            border-bottom: 1px solid rgba(26, 21, 18, 0.05);
+        /* Keep whole page dark */
+        body,
+        main,
+        section,
+        div,
+        header,
+        footer {
+            background-color: transparent;
         }
 
-        .editorial-gallery .logo, 
-        .editorial-gallery .nav-links a {
+        /* Override Header/Nav */
+        .editorial-gallery nav {
+            background: rgba(4, 27, 61, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .editorial-gallery .top-right-nav a {
             color: var(--editorial-text);
         }
 
-        .editorial-gallery .logo span {
+        .editorial-gallery .top-right-nav a:hover {
             color: var(--editorial-accent);
         }
 
-        /* Gallery Hero */
+        /* Header */
         .gallery-editorial-header {
-            padding: 180px 5% 100px;
+            padding: 180px 5% 70px;
             text-align: center;
             position: relative;
+            background: #041b3d;
         }
 
         .gallery-editorial-header h1 {
             font-size: 7rem;
-            font-weight: 400;
+            font-weight: 500;
             font-family: var(--editorial-font-alt);
-            margin-bottom: 20px;
-            color: var(--editorial-text);
+            margin: 0 0 20px;
+            color: #0047AB;
             letter-spacing: -2px;
+            line-height: 1;
         }
 
         .gallery-editorial-header p {
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.15rem;
+            max-width: 700px;
             margin: 0 auto;
-            color: rgba(26, 21, 18, 0.6);
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
             font-weight: 300;
         }
 
-        /* Floating Decoration Panels */
-        .floating-element {
-            position: absolute;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.8;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
-            animation: floatSlow 10s ease-in-out infinite;
-        }
-
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .panel-1 { top: 15%; left: 8%; width: 140px; animation-delay: 0s; }
-        .panel-2 { top: 25%; right: 10%; width: 180px; animation-delay: -2s; }
-        .panel-3 { bottom: 10%; left: 5%; width: 120px; animation-delay: -5s; }
-        .panel-4 { bottom: 20%; right: 5%; width: 150px; animation-delay: -7s; }
-
-        /* Magazine Grid Layout */
-        .editorial-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 5% 150px;
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 40px;
-        }
-
-        /* Grid Item Styles */
-        .editorial-item {
+        /* Gallery section wrapper */
+        .gallery-section {
+            width: 100%;
+            background: #041b3d;
+            padding: 20px 0 120px;
             position: relative;
-            background: white;
+        }
+
+        .gallery-stage {
+            width: 100%;
+            max-width: 1600px;
+            height: 650px;
+            margin: 0 auto;
+            position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.03);
-            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+            background: #041b3d;
         }
 
-        .editorial-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .editorial-item img {
+        .circular-gallery {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 1.5s ease;
+            position: relative;
+            overflow: hidden;
+            background: #041b3d;
+            cursor: grab;
         }
 
-        .editorial-item:hover img {
-            transform: scale(1.05);
+        .circular-gallery:active {
+            cursor: grabbing;
         }
 
-        .editorial-content {
-            padding: 40px;
-            background: white;
-            z-index: 2;
+        .circular-gallery canvas {
+            display: block !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: #041b3d !important;
         }
 
-        .editorial-content h3 {
-            font-family: var(--editorial-font-alt);
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--editorial-text);
+        /* Remove accidental white blocks if any inherited style exists */
+        .editorial-content,
+        .editorial-item,
+        .gallery-wrapper,
+        .page-wrapper,
+        .container,
+        .wrapper {
+            background: transparent !important;
         }
 
-        .editorial-content p {
-            font-size: 0.95rem;
-            color: rgba(26, 21, 18, 0.6);
-            margin-bottom: 25px;
-            line-height: 1.6;
+        /* Footer */
+        .editorial-gallery footer {
+            background: #041b3d;
+            color: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .explore-btn {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            color: var(--editorial-text);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid var(--editorial-text);
-            padding-bottom: 5px;
-            transition: gap 0.3s ease;
+        .editorial-gallery footer h2,
+        .editorial-gallery footer h4,
+        .editorial-gallery footer a,
+        .editorial-gallery footer p,
+        .editorial-gallery footer li {
+            color: white;
         }
 
-        .explore-btn:hover {
-            gap: 20px;
+        .editorial-gallery footer .tagline {
             color: var(--editorial-accent);
-            border-color: var(--editorial-accent);
         }
 
-        /* Specific Sizes */
-        .item-hero {
-            grid-column: span 12;
-            height: 700px;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-        }
-
-        .item-medium {
-            grid-column: span 6;
-            height: 600px;
-        }
-
-        .item-small {
-            grid-column: span 4;
-            height: 500px;
-        }
-
-        /* Responsive */
         @media (max-width: 1100px) {
-            .item-medium { grid-column: span 6; }
-            .item-small { grid-column: span 6; }
-            .gallery-editorial-header h1 { font-size: 5rem; }
+            .gallery-editorial-header h1 {
+                font-size: 5rem;
+            }
+
+            .gallery-stage {
+                height: 560px;
+            }
         }
 
         @media (max-width: 768px) {
-            .item-hero { 
-                grid-template-columns: 1fr; 
-                height: auto; 
-                grid-column: span 12;
+            .gallery-editorial-header {
+                padding: 150px 6% 50px;
             }
-            .item-hero .editorial-content { height: 350px; }
-            .item-medium, .item-small { 
-                grid-column: span 12; 
-                height: 500px; 
+
+            .gallery-editorial-header h1 {
+                font-size: 4rem;
             }
-            .gallery-editorial-header h1 { font-size: 4rem; }
-            .floating-element { display: none; }
+
+            .gallery-editorial-header p {
+                font-size: 1rem;
+            }
+
+            .gallery-stage {
+                height: 460px;
+            }
         }
 
-        /* Dark Footer Transition Overrides */
-        .editorial-gallery footer {
-            background: var(--editorial-text);
-            color: white;
-        }
-        .editorial-gallery footer h2, 
-        .editorial-gallery footer h4,
-        .editorial-gallery footer a {
-            color: white;
-        }
-        .editorial-gallery footer .tagline {
-            color: var(--editorial-accent);
+        @media (max-width: 480px) {
+            .gallery-editorial-header h1 {
+                font-size: 3rem;
+            }
+
+            .gallery-stage {
+                height: 380px;
+            }
         }
     </style>
 </head>
 
 <body class="editorial-gallery">
+    <div class="top-left-logo animate-up">
+        <a href="index.html"><img src="mmmm.png" alt="Fortivo Logo"></a>
+    </div>
 
-    <nav>
-        <div class="logo">
-            <img src="fortivooo.jpeg" alt="Fortivo" class="nav-logo">
-            FORTIVO <span>INDUSTRIES</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <a href="contact.html" class="btn btn-outline" style="border-color: var(--editorial-text); color: var(--editorial-text);">Get a Quote</a>
-    </nav>
+    <div class="top-right-nav animate-up">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Product</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </div>
 
     <header class="gallery-editorial-header">
-        <!-- Floating Panels for Editorial Feel -->
-        <img src="floating_veneer_plywood_1773417063249.png" class="floating-element panel-1" alt="Decorative Plywood">
-        <img src="floating_dark_walnut_panel_1773417122500.png" class="floating-element panel-2" alt="Decorative Plywood">
-        <img src="floating_ribbed_panel_1773417080239.png" class="floating-element panel-3" alt="Decorative Plywood">
-        <img src="floating_matte_plywood_1773417097616.png" class="floating-element panel-4" alt="Decorative Plywood">
-
         <div class="animate-up">
             <h1>Gallery</h1>
             <p>Explore premium plywood surfaces, textures, and finishes crafted for modern interiors.</p>
         </div>
     </header>
 
-    <div class="editorial-grid">
-        <!-- Top Row - 3 Images -->
-        <div class="editorial-item item-small animate-up">
-            <img src="gg.png" alt="Signature Collection">
+    <section class="gallery-section">
+        <div class="gallery-stage">
+            <div class="circular-gallery" id="circularGallery"></div>
         </div>
-        <div class="editorial-item item-small animate-up">
-            <img src="2.png" alt="Premium Finish">
-        </div>
-        <div class="editorial-item item-small animate-up">
-            <img src="3.png" alt="Natural Grain">
-        </div>
-
-        <!-- 2. Medium Blocks -->
-        <div class="editorial-item item-medium animate-up">
-            <div style="width: 100%; height: 100%; overflow: hidden;">
-                <img src="4.png" alt="Premium Surfaces">
-            </div>
-        </div>
-
-        <div class="editorial-item item-medium animate-up">
-            <div style="width: 100%; height: 100%; overflow: hidden;">
-                <img src="5.png" alt="Interior Architecture">
-            </div>
-        </div>
-
-        <!-- 3. Smaller Blocks -->
-        <div class="editorial-item item-small animate-up">
-            <div style="width: 100%; height: 100%; overflow: hidden;">
-                <img src="6.png" alt="Textured Panels">
-            </div>
-        </div>
-
-        <div class="editorial-item item-small animate-up">
-            <div style="width: 100%; height: 100%; overflow: hidden;">
-                <img src="7.png" alt="Veneer Selection">
-            </div>
-        </div>
-
-        <div class="editorial-item item-small animate-up">
-            <div style="width: 100%; height: 100%; overflow: hidden;">
-                <img src="8.png" alt="Modern Interiors">
-            </div>
-        </div>
-    </div>
+    </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h2>FORTIVO <span>INDUSTRIES</span></h2>
-                <p class="tagline">BUILD TO LAST</p>
+                <img src="coo.png" alt="Fortivo Logo" class="footer-logo">
             </div>
+
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
@@ -306,6 +241,7 @@
                     <li><a href="gallery.html">Gallery</a></li>
                 </ul>
             </div>
+
             <div class="footer-links">
                 <h4>Contact</h4>
                 <ul>
@@ -317,8 +253,9 @@
                 </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2026 FORTIVO INDUSTRIES – BUILD TO LAST. All Rights Reserved.</p>
+            <p>&copy; 2026 FORTIVO PLYBOARDS. All Rights Reserved.</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -327,32 +264,36 @@
         </div>
     </footer>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-visible');
-                }
+    <script type="module">
+        import CircularGallery from './CircularGallery.js';
+
+        const existingGalleryImages = [
+            { image: "gg.png", text: "Signature Collection" },
+            { image: "ee.png", text: "Exquisite Texture" },
+            { image: "ff.png", text: "Modern Design" },
+            { image: "2.png", text: "Premium Finish" },
+            { image: "3.png", text: "Natural Grain" },
+            { image: "4.png", text: "Premium Surfaces" },
+            { image: "5.png", text: "Interior Architecture" },
+            { image: "6.png", text: "Textured Panels" },
+            { image: "7.png", text: "Veneer Selection" },
+            { image: "8.png", text: "Modern Interiors" }
+        ];
+
+        const gal = document.getElementById("circularGallery");
+
+        if (gal) {
+            new CircularGallery(gal, {
+                items: existingGalleryImages,
+                bend: 1.4,
+                textColor: "#ffffff",
+                borderRadius: 0.05,
+                scrollSpeed: 2,
+                scrollEase: 0.05,
+                font: "bold 30px Outfit"
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.animate-up').forEach(el => {
-            el.classList.add('fade-in');
-            observer.observe(el);
-        });
-
-        // Sticky Navbar Glassmorphism Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(249, 246, 241, 0.98)';
-                nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.05)';
-            } else {
-                nav.style.background = 'rgba(249, 246, 241, 0.9)';
-                nav.style.boxShadow = 'none';
-            }
-        });
+        }
     </script>
 </body>
 
-</html>
+</html>
