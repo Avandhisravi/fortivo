@@ -28,6 +28,18 @@
                 <a href="#contact">Contact</a>
             </div>
 
+            <!-- MOBILE NAV TOGGLE -->
+            <div id="navToggle" class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="navLinks" class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+
             <video autoplay muted loop playsinline class="hero-video">
                 <source src="hero_page.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -461,14 +473,10 @@
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 FORTIVO PLYBOARDS. All Rights Reserved.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FORTIVO PLYBOARDS. All Rights Reserved.</p>
+            <a href="https://www.instagram.com/intellex.web?igsh=MWlkODZuMmt0bjJleg==" class="meet-developers" target="_blank" rel="noopener noreferrer">Meet the Developers</a>
+        </div>
         </footer>
     </div>
 
@@ -687,7 +695,32 @@
             });
         }
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(".features-grid-cinematic");
 
+            if (!container || window.innerWidth > 768) return;
+
+            const cards = container.querySelectorAll(".feature-card-cinematic");
+            let index = 0;
+
+            function autoSlide() {
+                const cardWidth = cards[0].offsetWidth + 18;
+                index++;
+
+                if (index >= cards.length) {
+                    index = 0;
+                }
+
+                container.scrollTo({
+                    left: cardWidth * index,
+                    behavior: "smooth"
+                });
+            }
+
+            setInterval(autoSlide, 3000);
+        });
+    </script>
 </body>
 
 </html>
