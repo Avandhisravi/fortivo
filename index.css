@@ -2707,7 +2707,6 @@ footer {
 
     /* Flex Grids to Single Column Centered */
 
-    .values-grid,
     .contact-section,
     .footer-content,
     .luxury-about-grid {
@@ -2751,11 +2750,6 @@ footer {
         text-align: center !important;
     }
 
-    .value-card {
-        width: 300px !important;
-        height: 300px !important;
-        margin: 0 auto 30px !important;
-    }
 
     /* Footer Cleanup */
     .footer-links ul {
@@ -2868,24 +2862,6 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    .value-card {
-        background: linear-gradient(135deg, #0d1a2c, #072349) !important;
-        border: 1px solid rgba(226, 101, 52, 0.2) !important;
-    }
-
-    .value-card h3 {
-        color: #ffffff !important;
-    }
-
-    .value-card p {
-        color: rgba(255, 255, 255, 0.82) !important;
-    }
-
-    .value-card i {
-        color: var(--color-accent) !important;
-    }
-}
 
 @media (max-width: 768px) {
     .products-grid {
@@ -3072,4 +3048,164 @@ footer {
 
 .gallery-card {
     cursor: pointer;
+}
+
+/* --- ABOUT CARDS PREMIUM MOBILE REDESIGN (Breakpoint: 1024px) --- */
+@media (max-width: 1024px) {
+    #about .values-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+        padding: 0 5% !important;
+    }
+
+    #about .value-card {
+        width: 100% !important;
+        max-width: 420px !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 auto 10px !important;
+        padding: 45px 30px !important;
+        background: #0d1a2c !important; /* Premium Navy */
+        border: 1px solid rgba(226, 101, 52, 0.4) !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+        border-radius: 28px !important;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4) !important;
+        cursor: pointer !important;
+        position: relative !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        pointer-events: auto !important;
+    }
+
+    #about .value-card i {
+        color: var(--color-accent) !important;
+        font-size: 2.2rem !important;
+        margin-bottom: 22px !important;
+        display: block !important;
+        margin-left: 0 !important;
+    }
+
+    #about .value-card h3 {
+        color: #fff !important;
+        font-size: 1.6rem !important;
+        margin-bottom: 14px !important;
+        text-align: left !important;
+    }
+
+    /* Description Preview with Smooth Fade */
+    #about .value-card p:not(:first-of-type) {
+        display: none !important;
+    }
+
+    #about .value-card p:first-of-type {
+        color: #d1d9e6 !important;
+        font-size: 1.05rem !important;
+        line-height: 1.75 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 4 !important;
+        line-clamp: 4 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        text-align: left !important;
+        mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    }
+
+    #about .value-card:active {
+        transform: scale(0.97) translateY(2px) !important;
+        background: #122841 !important;
+    }
+}
+
+/* About Card Full Description Modal (Premium Mobile) */
+.about-card-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 14, 25, 0.85); /* Deep blurred navy */
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 20000;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.about-card-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.about-card-modal-content {
+    background: #0d1a2c;
+    width: 100%;
+    max-width: 440px;
+    max-height: 80vh;
+    padding: 55px 35px 45px;
+    border-radius: 32px;
+    border: 1px solid rgba(226, 101, 52, 0.4);
+    position: relative;
+    overflow-y: auto;
+    transform: scale(0.85);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+
+.about-card-modal.show .about-card-modal-content {
+    transform: scale(1);
+}
+
+.close-about-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(226, 101, 52, 0.1);
+    color: var(--color-accent);
+    font-size: 1.4rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-about-modal:hover {
+    background: var(--color-accent);
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.about-card-modal h3 {
+    color: var(--color-accent);
+    font-size: 1.9rem;
+    margin-bottom: 25px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(226, 101, 52, 0.2);
+    padding-bottom: 15px;
+}
+
+.about-card-modal .modal-body {
+    color: #fff;
+    font-size: 1.05rem;
+    line-height: 1.85;
+}
+
+.about-card-modal .modal-body p {
+    margin-bottom: 20px;
+    color: #d1d9e6;
+}
+
+.about-card-modal .modal-body p:last-child {
+    margin-bottom: 0;
 }

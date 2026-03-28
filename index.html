@@ -828,6 +828,59 @@
         <img class="modal-content" id="modalImage">
         <div id="modalCaption"></div>
     </div>
+
+    <!-- ABOUT CARD MODAL -->
+    <div id="aboutCardModal" class="about-card-modal">
+        <div class="about-card-modal-content">
+            <span class="close-about-modal"><i class="fas fa-times"></i></span>
+            <h3></h3>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT FOR ABOUT CARDS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll('.value-card');
+            const modal = document.getElementById('aboutCardModal');
+            const closeBtn = document.querySelector('.close-about-modal');
+
+            if (!modal || !cards.length) return;
+
+            const handleCardClick = (card) => {
+                // Trigger on mobile/tablet view (< 1024px)
+                if (window.innerWidth > 1024) return;
+
+                const title = card.querySelector('h3').innerText;
+                const paragraphs = Array.from(card.querySelectorAll('p')).map(p => p.innerHTML);
+                const modalBody = paragraphs.map(p => `<p>${p}</p>`).join('');
+
+                modal.querySelector('h3').innerText = title;
+                modal.querySelector('.modal-body').innerHTML = modalBody;
+
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; 
+            };
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => handleCardClick(card));
+                // Add touchstart for snappier mobile feel
+                card.addEventListener('touchstart', (e) => {
+                    // Prevent default only if necessary, but here we want to allow scroll
+                }, {passive: true});
+            });
+
+            function closeModal() {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        });
+    </script>
 </body>
 
 </html>
