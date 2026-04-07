@@ -475,6 +475,18 @@
             </section>
         </div>
 
+        <!-- LOCATION / MAP SECTION -->
+        <section id="location" class="map-section animate-up">
+            <div class="section-container">
+                <div class="map-wrapper">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3930.5630325435!2d76.5774498147!3d9.84194759296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwNTAnMzEuMCJOIDc2wrAzNCc0OC4xIkU!5e0!3m2!1sen!2sin!4v1712500412345!5m2!1sen!2sin"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
         <!-- FOOTER -->
         <footer>
             <div class="footer-content">
@@ -847,7 +859,7 @@
                 modal.querySelector('.modal-body').innerHTML = modalBody;
 
                 modal.classList.add('show');
-                document.body.style.overflow = 'hidden'; 
+                document.body.style.overflow = 'hidden';
             };
 
             cards.forEach(card => {
@@ -855,7 +867,7 @@
                 // Add touchstart for snappier mobile feel
                 card.addEventListener('touchstart', (e) => {
                     // Prevent default only if necessary, but here we want to allow scroll
-                }, {passive: true});
+                }, { passive: true });
             });
 
             function closeModal() {
