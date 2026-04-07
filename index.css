@@ -3265,6 +3265,39 @@ footer {
     cursor: crosshair;
 }
 
+.map-redirect-btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 10;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(226, 101, 52, 0.4);
+    transition: var(--transition-smooth);
+    opacity: 0.9;
+}
+
+.map-redirect-btn:hover {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.05);
+    background: #fff;
+    color: var(--color-accent);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+}
+
+.map-redirect-btn i {
+    font-size: 1rem;
+}
+
 .map-wrapper::after {
     content: 'View Our Location';
     position: absolute;
